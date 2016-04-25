@@ -1,8 +1,10 @@
 # Implementation-of-MAP-in-C
 
+
+<h2>CONTRIBUTORS</h2>
 <i>Sumedh Arani</i><br>
-<i>Vandana V Kulkarni 01FB14ECS276</i><br>
-Srilakshmi M Bharadwaj 01FB14ECS251
+<i>Vandana V Kulkarni </i><br>
+<i>Srilakshmi M Bharadwaj</i>
 
 <h2>INTRODUCTION</h2>
 In computing, a hash map is a data structure used to implement an associative array, a structure that can map keys to values. A hash table uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
