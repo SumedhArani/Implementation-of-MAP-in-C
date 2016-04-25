@@ -20,35 +20,45 @@ Hash map is implemented using open hashing. In open hashing, keys are stored in 
 The data types of key and value is passed as an argument to map_define() and map_declare() which serves as an interface for defining the map. These data types are interpreted accordingly in the functions being accessed. #preprocessor can be used to concatenate a particulay data type with an identifier. All the structures use object-like macros whereas the function definitions use function- like macros.
 
 <h3>EXAMPLES</h3>
-Object-like macro : #define list_declare(type) \
+Object-like macro : 
+<code>
+#define list_declare(type) \
 typedef struct type##_lnode \
 {\
 type *data; \
 struct type##_lnode *next;\
 }type##_node; \
+</code>
 
 Function-like macro:
+<code>
 void list_##type##_insert(type##_node** head, type *data);
-
+</code>
 Hash function
 The hash function for integer is as follows: int hashcode_int(int* key)
+<code>
 {
   int code = 0;
   code = ((*key) * 9) % 16;
   return code; 
 }
+</code>
 The size of the hash table is 16. The hash index is calculated by multiplying the integer with a number that is of the order of hash table size (2^4 in this case). The multiplier should not be a factor of 16. The hash index thus obtained will be the remainder of division of the result of multiplication with the hash table size. In this way, enough variation is produced in the value of hash index obtained, thus minimizing collisions.
 
- The hash function for strings/character is as follows: int hashcode_char(char* key)
+ The hash function for strings/character is as follows:
+ <code>
+int hashcode_char(char* key)
 {
-int i;
-int code = 0;
-int len = 0;
-len = strlen(key)-1; for(i = 0; i <= len; ++i) {
-if(key[i] >= 65 && key[i] <= 90) code += (key[i] - 65 + 1);
-else if(key[i] >= 97 && key[i] <= 122) code += (key[i] - 97 + 1);
+ int i;
+ int code = 0;
+ int len = 0;
+ len = strlen(key)-1; for(i = 0; i <= len; ++i){
+ if(key[i] >= 65 && key[i] <= 90) code += (key[i] - 65 + 1);
+ else if(key[i] >= 97 && key[i] <= 122) code += (key[i] - 97 + 1);
+ }
+return code % 16; 
 }
-return code % 16; }
+</code>
 In this case the hash index is computed by taking the summation of the position of the alphabets in the alphabet set, the result of which is divided by the hash table size. The remainder of the division provides the hash index.
 
 <h4>The insert function</h4>
@@ -59,7 +69,10 @@ The required key value pairs to be inseted in the map is passed as an argument t
 
 <h4>Delete and search function</h4>
 Prototype:
-Delete : void map_keytype##_valuetype##_delete(keytype* k, int index); Search : void map_keytype##_valuetype##_display(keytype* k, int index);
+Delete :
+<code>
+void map_keytype##_valuetype##_delete(keytype* k, int index); //Search : void map_keytype##_valuetype##_display(keytype* k, int index);
+</code>
 The key to be searched or deleted is passed as an argument to search or delete function. The hash index corresponding to the key is calculated . If the desired key is found at the hash index computed the value corresponding to the key is displayed in case of search or the key-value pair is deleted in case of delete respectively. If the key is not found an error message “Key not found” is displayed.
 In additional to these functions there are some additional intermediate functions to compute the hash index for serach ,delete and insert respectively.
 
