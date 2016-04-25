@@ -1,7 +1,7 @@
 # Implementation-of-MAP-in-C
 
-Sumedh Arani 01FB14ECS258 
-Vandana V Kulkarni 01FB14ECS276 
+<i>Sumedh Arani</i><br>
+<i>Vandana V Kulkarni 01FB14ECS276</i><br>
 Srilakshmi M Bharadwaj 01FB14ECS251
 
 <h2>INTRODUCTION</h2>
