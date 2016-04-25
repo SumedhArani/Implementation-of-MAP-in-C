@@ -22,25 +22,25 @@ The data types of key and value is passed as an argument to map_define() and map
 <h3>EXAMPLES</h3>
 <h4>Object-like macro : </h4>
 <code>
-#define list_declare(type) \<br>
-typedef struct type##_lnode \<br>
-{\<br>
-type *data; \<br>
-struct type##_lnode *next;\<br>
-}type##_node; \<br>
+define list_declare(type) \
+typedef struct type##_lnode \
+{\
+type *data; \
+struct type##_lnode *next;\
+}type##_node; \
 </code>
 
 Function-like macro:
 <code>
-void list_##type##_insert(type##_node** head, type *data);<br>
+void list_##type##_insert(type##_node** head, type *data);
 </code>
 Hash function
 The hash function for integer is as follows: int hashcode_int(int* key)
 <code>
-{<br>
-  int code = 0;<br>
-  code = ((*key) * 9) % 16;<br>
-  return code; <br>
+{
+  int code = 0;
+  code = ((*key) * 9) % 16;
+  return code;
 }
 </code>
 The size of the hash table is 16. The hash index is calculated by multiplying the integer with a number that is of the order of hash table size (2^4 in this case). The multiplier should not be a factor of 16. The hash index thus obtained will be the remainder of division of the result of multiplication with the hash table size. In this way, enough variation is produced in the value of hash index obtained, thus minimizing collisions.
@@ -48,16 +48,16 @@ The size of the hash table is 16. The hash index is calculated by multiplying th
  The hash function for strings/character is as follows:
  <code>
 int hashcode_char(char* key)<br>
-{<br>
- int i;<br>
- int code = 0;<br>
- int len = 0;<br>
- len = strlen(key)-1; for(i = 0; i <= len; ++i){<br>
- if(key[i] >= 65 && key[i] <= 90) code += (key[i] - 65 + 1);<br>
- else if(key[i] >= 97 && key[i] <= 122) code += (key[i] - 97 + 1);<br>
- }<br>
-return code % 16; <br>
-}<br>
+{
+ int i;
+ int code = 0;
+ int len = 0;
+ len = strlen(key)-1; for(i = 0; i <= len; ++i){
+ if(key[i] >= 65 && key[i] <= 90) code += (key[i] - 65 + 1);
+ else if(key[i] >= 97 && key[i] <= 122) code += (key[i] - 97 + 1);
+ }
+return code % 16;
+}
 </code>
 In this case the hash index is computed by taking the summation of the position of the alphabets in the alphabet set, the result of which is divided by the hash table size. The remainder of the division provides the hash index.
 
