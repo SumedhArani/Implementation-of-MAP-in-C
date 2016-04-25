@@ -1,26 +1,25 @@
 # Implementation-of-MAP-in-C
 
-
-<h2>CONTRIBUTORS</h2>
+<h3>CONTRIBUTORS</h3>
 <i>Sumedh Arani</i><br>
 <i>Vandana V Kulkarni </i><br>
 <i>Srilakshmi M Bharadwaj</i>
 
-<h2>INTRODUCTION</h2>
+<h3>INTRODUCTION</h3>
 In computing, a hash map is a data structure used to implement an associative array, a structure that can map keys to values. A hash table uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
 Ideally, the hash function will assign each key to a unique bucket, but it is possible that two keys will generate an identical hash causing both keys to point to the same bucket. Instead, most hash table designs assume that hash collisions —different keys that are assigned by the hash function to the same bucket—will occur and must be accommodated in some way.
 In a well-dimensioned hash table, the average cost (number of instructions) for each lookup is independent of the number of elements stored in the table. Many hash table designs also allow arbitrary insertions and deletions of key-value pairs, at constant average cost per operation.
 In many situations, hash tables turn out to be more efficient than search trees or any other table lookup structure. For this reason, they are widely used in many kinds of computer software, particularly for associative arrays, database indexing, caches, and sets.
-<h2>PROJECT AIM</h2>
+<h3>PROJECT AIM</h3>
 The aim of this project is to implement hash map in C using generics. In order to achieve generic programming in C the #preprocessor macro is being used. A macro is a piece of code that was labeled with a name. Whenever the preprocessor encounters it, the label is replaced by the associated code. Basically two kinds of macros are being used : object-like macros
 (resemble data objects when used) and function-like macros (resemble function calls).
- <h2>IMPLEMENTATION</h2>
+ <h3>IMPLEMENTATION</h3>
 Hash map is implemented using open hashing. In open hashing, keys are stored in linked lists attached to cells of a hash table. Every cell of hash table points to the head of a linked list. The nodes of the linked list has three parts : pointer to key, poinetr to value(value in turn can be a list), pointer to next node. In case two keys correspond to the same hash index, a new node is created, which is inseted at the end of the linked list at that particular hash cell.
 
-<h2>USE OF MACROS</h2>
+<h3>USE OF MACROS</h3>
 The data types of key and value is passed as an argument to map_define() and map_declare() which serves as an interface for defining the map. These data types are interpreted accordingly in the functions being accessed. #preprocessor can be used to concatenate a particulay data type with an identifier. All the structures use object-like macros whereas the function definitions use function- like macros.
 
-<h2>EXAMPLES</h2>
+<h3>EXAMPLES</h3>
 Object-like macro : #define list_declare(type) \
 typedef struct type##_lnode \
 {\
@@ -64,6 +63,6 @@ Delete : void map_keytype##_valuetype##_delete(keytype* k, int index); Search : 
 The key to be searched or deleted is passed as an argument to search or delete function. The hash index corresponding to the key is calculated . If the desired key is found at the hash index computed the value corresponding to the key is displayed in case of search or the key-value pair is deleted in case of delete respectively. If the key is not found an error message “Key not found” is displayed.
 In additional to these functions there are some additional intermediate functions to compute the hash index for serach ,delete and insert respectively.
 
-<h2>RESULTS</h2>
+<h3>RESULTS</h3>
 Works for large files.(Tested for 1000) Handles duplicate keys.
 Works for composite key type. Provision for user defined hash function
