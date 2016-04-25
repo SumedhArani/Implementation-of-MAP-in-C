@@ -15,10 +15,10 @@ The aim of this project is to implement hash map in C using generics. In order t
  <h2>IMPLEMENTATION</h2>
 Hash map is implemented using open hashing. In open hashing, keys are stored in linked lists attached to cells of a hash table. Every cell of hash table points to the head of a linked list. The nodes of the linked list has three parts : pointer to key, poinetr to value(value in turn can be a list), pointer to next node. In case two keys correspond to the same hash index, a new node is created, which is inseted at the end of the linked list at that particular hash cell.
 
-<h2>Use of macros</h2>
+<h2>USE OF MACROS</h2>
 The data types of key and value is passed as an argument to map_define() and map_declare() which serves as an interface for defining the map. These data types are interpreted accordingly in the functions being accessed. #preprocessor can be used to concatenate a particulay data type with an identifier. All the structures use object-like macros whereas the function definitions use function- like macros.
 
-<h2>Examples</h2>
+<h2>EXAMPLES</h2>
 Object-like macro : #define list_declare(type) \
 typedef struct type##_lnode \
 {\
@@ -50,13 +50,13 @@ else if(key[i] >= 97 && key[i] <= 122) code += (key[i] - 97 + 1);
 return code % 16; }
 In this case the hash index is computed by taking the summation of the position of the alphabets in the alphabet set, the result of which is divided by the hash table size. The remainder of the division provides the hash index.
 
-The insert function
+<h4>The insert function</h4>
 Prototype:
 void map_##keytype##_##valuetype##_insert(keytype##_##valuetype##_node** head, keytype *k, valuetype *v);
 The required key value pairs to be inseted in the map is passed as an argument to map_insert(). The macros interpret these data types accordingly. The argument to the function is a string of key-value pairs separated by colon (:) and different key-value pairs are separated by (;). This string is processed in hash_sfind() and the keys and values are separated and inseted into the map. Each time the hash index corresponding to the key is calculated and the value corresponding to the key is inserted at the hash index. In case of collisions or
  first node a new node is created and appended at the end of the list at the desired hash index.
 
-   Delete and search function
+<h4>Delete and search function</h4>
 Prototype:
 Delete : void map_keytype##_valuetype##_delete(keytype* k, int index); Search : void map_keytype##_valuetype##_display(keytype* k, int index);
 The key to be searched or deleted is passed as an argument to search or delete function. The hash index corresponding to the key is calculated . If the desired key is found at the hash index computed the value corresponding to the key is displayed in case of search or the key-value pair is deleted in case of delete respectively. If the key is not found an error message “Key not found” is displayed.
