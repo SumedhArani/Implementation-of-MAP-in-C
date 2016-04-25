@@ -72,7 +72,7 @@ Prototype:
 Delete :
 <code>
 void map_keytype##_valuetype##_delete(keytype* k, int index);
-<code><br>
+</code><br>
 Search :
 <code>
 void map_keytype##_valuetype##_display(keytype* k, int index);<br>
