@@ -17,17 +17,17 @@ The aim of this project is to implement hash map in C using generics. In order t
 Hash map is implemented using open hashing. In open hashing, keys are stored in linked lists attached to cells of a hash table. Every cell of hash table points to the head of a linked list. The nodes of the linked list has three parts : pointer to key, poinetr to value(value in turn can be a list), pointer to next node. In case two keys correspond to the same hash index, a new node is created, which is inseted at the end of the linked list at that particular hash cell.
 
 <h3>USE OF MACROS</h3>
-The data types of key and value is passed as an argument to `map_define()` and `map_declare()` which serves as an interface for defining the map. These data types are interpreted accordingly in the functions being accessed. #preprocessor can be used to concatenate a particulay data type with an identifier. All the structures use object-like macros whereas the function definitions use function- like macros.
+The data types of key and value is passed as an argument to ```map_define()``` and ```map_declare()``` which serves as an interface for defining the map. These data types are interpreted accordingly in the functions being accessed. #preprocessor can be used to concatenate a particulay data type with an identifier. All the structures use object-like macros whereas the function definitions use function- like macros.
 
 <h3>EXAMPLES</h3>
 <h4>Object-like macro : </h4>
 ```
-define list_declare(type) \
-typedef struct type##_lnode \
-{\
-type *data; \
-struct type##_lnode *next;\
-}type##_node; \
+define list_declare(type) 
+typedef struct type##_lnode 
+{
+type *data; 
+struct type##_lnode *next;
+}type##_node;
 ```
 
 Function-like macro:
@@ -77,4 +77,4 @@ In additional to these functions there are some additional intermediate function
 
 <h3>RESULTS</h3>
 Works for large files.(Tested for 1000) Handles duplicate keys.
-Works for composite key type. Provision for user defined hash function
+Works for composite key type.
