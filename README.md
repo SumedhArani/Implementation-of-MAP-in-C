@@ -21,15 +21,14 @@ The data types of key and value is passed as an argument to ```map_define()``` a
 
 <h3>EXAMPLES</h3>
 <h4>Object-like macro : </h4>
-```
-define list_declare(type) 
-typedef struct type##_lnode 
+<code>
+#define list_declare(type)
+typedef struct type_lnode 
 {
 type *data; 
-struct type##_lnode *next;
-}type##_node;
-```
-
+struct type_lnode *next;
+}type_node;
+</code>
 Function-like macro:
 ```void list_##type##_insert(type##_node** head, type *data);```
 
@@ -62,16 +61,16 @@ In this case the hash index is computed by taking the summation of the position 
 
 <h4>The insert function</h4>
 Prototype:
-```void map_##keytype##_##valuetype##_insert(keytype##_##valuetype##_node** head, keytype *k, valuetype *v);```
-The required key value pairs to be inseted in the map is passed as an argument to ```map_insert()``` The macros interpret these data types accordingly. The argument to the function is a string of key-value pairs separated by colon (:) and different key-value pairs are separated by (;). This string is processed in hash_sfind() and the keys and values are separated and inseted into the map. Each time the hash index corresponding to the key is calculated and the value corresponding to the key is inserted at the hash index. In case of collisions or
+<code>void map_##keytype##_##valuetype##_insert(keytype##_##valuetype##_node** head, keytype *k, valuetype *v);</code>
+The required key value pairs to be inseted in the map is passed as an argument to <code>map_insert()</code> The macros interpret these data types accordingly. The argument to the function is a string of key-value pairs separated by colon (:) and different key-value pairs are separated by (;). This string is processed in hash_sfind() and the keys and values are separated and inseted into the map. Each time the hash index corresponding to the key is calculated and the value corresponding to the key is inserted at the hash index. In case of collisions or
  first node a new node is created and appended at the end of the list at the desired hash index.
 
 <h4>Delete and search function</h4>
 Prototype:
 ***Delete :***
-```void map_keytype##_valuetype##_delete(keytype* k, int index);```
+<code>void map_keytype##_valuetype##_delete(keytype* k, int index);</code>
 ***Search :***
-```void map_keytype##_valuetype##_display(keytype* k, int index);```
+<code>void map_keytype##_valuetype##_display(keytype* k, int index);</code>
 The key to be searched or deleted is passed as an argument to search or delete function. The hash index corresponding to the key is calculated . If the desired key is found at the hash index computed the value corresponding to the key is displayed in case of search or the key-value pair is deleted in case of delete respectively. If the key is not found an error message “Key not found” is displayed.
 In additional to these functions there are some additional intermediate functions to compute the hash index for serach ,delete and insert respectively.
 
