@@ -67,9 +67,9 @@ The required key value pairs to be inseted in the map is passed as an argument t
 
 <h4>Delete and search function</h4>
 Prototype:
-***Delete :***
+<bold>Delete :</bold>
 <code>void map_keytype##_valuetype##_delete(keytype* k, int index);</code>
-***Search :***
+</bold>Search :</bold>
 <code>void map_keytype##_valuetype##_display(keytype* k, int index);</code>
 The key to be searched or deleted is passed as an argument to search or delete function. The hash index corresponding to the key is calculated . If the desired key is found at the hash index computed the value corresponding to the key is displayed in case of search or the key-value pair is deleted in case of delete respectively. If the key is not found an error message “Key not found” is displayed.
 In additional to these functions there are some additional intermediate functions to compute the hash index for serach ,delete and insert respectively.
